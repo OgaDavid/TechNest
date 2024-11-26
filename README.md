@@ -3,3 +3,7 @@
 
 ### 🚀 TechNest Frontend Engineering mentorship program
 This Repo contains all development projects for the TechNest Frontend Engineering mentorship program.
+
+
+### 🥑Recent Contributions:
+![Alt](https://repobeats.axiom.co/api/embed/effa8ea220e6ee4ae24d21e34bab22b93e242041.svg "Repobeats analytics image")
