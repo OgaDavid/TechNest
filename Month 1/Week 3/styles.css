@@ -33,8 +33,10 @@ a {
 
 .character-grid {
   padding: 48px 0 20px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
   gap: 36px;
   width: 750px;
 }
@@ -48,6 +50,7 @@ a {
   border-radius: 8px;
   padding-right: 24px;
   overflow: hidden;
+  width: 350px;
 }
 
 .preview-card img {
@@ -96,4 +99,32 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .character-grid {
+    width: 100%;
+    padding: 24px;
+  }
+
+  .preview-card {
+    width: 100%;
+  }
+
+  .preview-card img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .preview-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card img {
+    width: 100%;
+  }
 }
