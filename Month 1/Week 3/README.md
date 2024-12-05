@@ -6,6 +6,8 @@
 |:-:|:-:|
 | <img src="https://github.com/user-attachments/assets/a707a2da-3340-4dad-8247-07ecc39760c0" /> | <img src="https://github.com/user-attachments/assets/59685079-4c91-4661-8357-1c4bfa8aea9a" /> |  
 
+## _📺Project Preview (Video)_
+[Rick and Morty Character Database](https://github.com/user-attachments/assets/19deff6e-137f-46d7-b93b-ba34868a9186)
 
 ## _✨Character Cards (Mobile)_
 
