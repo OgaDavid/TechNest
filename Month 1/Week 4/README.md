@@ -35,3 +35,6 @@ function injectProfileImagesAndText() {
 
 This function iterates over each profile in the `profileDatabase` array, finds the corresponding HTML elements by their IDs, and updates their `src` and `innerText` properties with the data from the JavaScript file. This approach ensures that the data is dynamically injected into the HTML, making it easier to update and manage. 
 
+# _Project Preview_
+
+![preview](https://github.com/user-attachments/assets/442556bf-3e51-493c-93d2-d56269cebc54)
