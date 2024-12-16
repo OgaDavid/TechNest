@@ -1,40 +1,107 @@
-# _Week 1_
+# _Month 2, Week 1_
 
 `Update your webpages to dynamically render UI from a JSON file [Example JSON]. This involves reading character data from a JSON file and generating HTML content to update the UI based on that data. Add error handling to your web page(s). Consider the user experience for such cases as an invalid file path, empty data, invalid data, etc.`
 
 # _Solution_
 
-To achieve this, I updated the HTML structure to include placeholders for the image and text of each profile card. Here is an example of the HTML structure for a profile card:
+## HTML Structure
+I updated the HTML structure to include a search input. This allows users to search for characters dynamically. Here is an example of the HTML structure:
 
 ```html
-<div class="preview-card">
-  <img id="image_rick" alt="rick sanchez" />
-  <h2 id="text_rick"></h2>
-</div>
+<section class="container">
+  <img class="logo" src="assets/rick-and-morty-logo.png" alt="logo" />
+  <input placeholder="Search character" type="text" data-input-search />
+  <div class="character-grid"></div>
+</section>
 ```
 
-I then created a function that injects the image and text for each profile card from a JavaScript file. The `profileDatabase` array in [`data.js`](https://github.com/OgaDavid/TechNest/blob/main/Month%201/Week%204/data.js) contains the static data for each profile.
+## JavaScript Logic
 
-Here is the JavaScript function that performs the injection:
+Next, I focused on the JavaScript logic to fetch data from a JSON file and dynamically update the UI.
+
+### _1. Function to Generate Markup for a Character_
+I created a function to generate the HTML markup for a single character card. This function takes a character object as input and returns the corresponding HTML string:
 
 ```javascript
-function injectProfileImagesAndText() {
-  profileDatabase.forEach((profile) => {
-    const characterImage = document.getElementById(`image_${profile.id}`);
-    const characterText = document.getElementById(`text_${profile.id}`);
-
-    if (characterImage && characterText) {
-      characterImage.src = profile.image;
-      characterText.innerText = profile.name;
-    } else {
-      console.error(`Element not found for profile id: ${profile.id}`);
-    }
-  });
+function generateCharacterMarkup(character) {
+  return `
+    <a
+      title="${character.name}"
+      class="preview-card"
+      href="pages/${character.pageUrl}"
+    >
+      <img src="${character.image}" alt="${character.name}" />
+      <h2>${character.name}</h2>
+    </a>
+  `;
 }
 ```
 
-This function iterates over each profile in the `profileDatabase` array, finds the corresponding HTML elements by their IDs, and updates their `src` and `innerText` properties with the data from the JavaScript file. This approach ensures that the data is dynamically injected into the HTML, making it easier to update and manage.
+### _2. Function to Update the Character Grid_
+I then created a function to update the character grid with the provided characters. This function handles cases where the characters array is empty or invalid:
+
+```javascript
+function updateCharacterGrid(characters) {
+  const characterGridElement = document.querySelector(".character-grid");
+
+  if (!characterGridElement) {
+    console.error("Character grid element not found");
+    return;
+  }
+
+  // Handle cases where characters is not an array or is empty during initial population or search
+  if (!Array.isArray(characters) || characters.length === 0) {
+    characterGridElement.innerHTML = `<p>Character "${
+      searchValue ? searchValue : ""
+    }" not found!</p>`;
+    return;
+  }
+
+  // if characters is an array and not empty generate markup for each character
+  const characterCards = characters.map(generateCharacterMarkup);
+  characterGridElement.innerHTML = characterCards.join("");
+}
+```
+
+### _3. Function to Filter and Display Characters Based on Search Value_
+To enable dynamic searching, I added a function to filter and display characters based on the search value. This function filters the characters and updates the character grid accordingly:
+
+```javascript
+function filterAndDisplayCharacters(searchValue) {
+  const filteredCharacters = profileDatabase.filter((character) => {
+    return character.name.toLowerCase().includes(searchValue.toLowerCase());
+  });
+
+  updateCharacterGrid(filteredCharacters);
+}
+```
+
+### _4. Event Listener for Search Input_
+Finally, I added an event listener to the search input to filter and display characters as the user types. This ensures that the character grid updates in real-time based on the search input:
+
+```javascript
+const inputSearch = document.querySelector("[data-input-search]");
+
+if (inputSearch) {
+  inputSearch.addEventListener("input", (e) => {
+    const searchValue = e.target.value.toLowerCase();
+    filterAndDisplayCharacters(searchValue);
+  });
+} else {
+  console.error("Search input element not found");
+}
+```
+
+## Initial Population of the Character Grid
+To initially populate the character grid, I called the `updateCharacterGrid` function with the `profileDatabase` data:
+
+```javascript
+// Initial population of the character grid
+updateCharacterGrid(profileDatabase);
+```
 
 # _Project Preview_
 
-![preview](https://github.com/user-attachments/assets/442556bf-3e51-493c-93d2-d56269cebc54)
+[Rick & Morty Character database](https://github.com/user-attachments/assets/9d927b9f-e289-41b6-b430-d4585760bce1)
+
+
