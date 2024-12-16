@@ -1,4 +1,4 @@
-# _Week 4_
+# _Month 1, Week 4_
 
 `Update your webpages to display static data from a Javascript file, instead of the data being hardcoded in the HTML file`
 
