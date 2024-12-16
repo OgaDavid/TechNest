@@ -1,4 +1,4 @@
-# _Week 3_
+# _Month 1, Week 3_
 
 `Create a new static webpage with multiple characters displayed (e.g., list, image, card, or other UI - you decide how it looks). Clicking on a character opens a card (that you created last week) for the selected character, and so clicking on different characters should show different card details.`
 
