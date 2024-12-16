@@ -1,4 +1,4 @@
-# _Week 2_
+# _Month 1, Week 2_
 
 `Your first step for the development project is to create a static webpage. The webpage should display character details, including an image, name and some descriptive text. You decide how it looks - it can be basic or you can start flexing your CSS skills.`
 
