@@ -15,7 +15,7 @@ function generateCharacterMarkup(character) {
 }
 
 // Function to update the character grid
-function updateCharacterGrid(characters) {
+function updateCharacterGrid(characters, searchValue) {
   const characterGridElement = document.querySelector(".character-grid");
 
   if (!characterGridElement) {
@@ -25,7 +25,9 @@ function updateCharacterGrid(characters) {
 
   // Handle cases where characters is not an array or is empty during initial population or search
   if (!Array.isArray(characters) || characters.length === 0) {
-    characterGridElement.innerHTML = "<p>Character not found!</p>";
+    characterGridElement.innerHTML = `<p>Character "${
+      searchValue ? searchValue : ""
+    }" not found!</p>`;
     return;
   }
 
@@ -40,7 +42,7 @@ function filterAndDisplayCharacters(searchValue) {
     return character.name.toLowerCase().includes(searchValue.toLowerCase());
   });
 
-  updateCharacterGrid(filteredCharacters);
+  updateCharacterGrid(filteredCharacters, searchValue);
 }
 
 // Add event listener to the search input
