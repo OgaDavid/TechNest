@@ -101,6 +101,12 @@ a {
   gap: 10px;
 }
 
+.message {
+  font-size: 24px;
+  padding: 30px 0;
+  color: var(--dark-blue);
+}
+
 @media screen and (max-width: 768px) {
   .character-grid {
     width: 100%;

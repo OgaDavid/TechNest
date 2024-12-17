@@ -24,7 +24,8 @@ function populateCharacterGrid() {
 
   // Handle cases where characters is not an array or is empty during initial population or search
   if (!Array.isArray(characters) || characters.length === 0) {
-    characterGridElement.innerHTML = "<p>No characters found!</p>";
+    characterGridElement.innerHTML =
+      '<p class="message">No characters found!</p>';
     return;
   }
 
