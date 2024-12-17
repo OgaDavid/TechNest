@@ -69,3 +69,6 @@ populateCharacterGrid();
 
 ![rick and morty](https://github.com/user-attachments/assets/b3f5448d-b282-4536-adff-4a89e661f351)
 
+![Error screen](https://github.com/user-attachments/assets/cdf0af53-501b-4363-a285-2aa86e655306)
+
+
