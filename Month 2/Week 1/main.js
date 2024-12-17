@@ -14,48 +14,21 @@ function generateCharacterMarkup(character) {
   `;
 }
 
-// Function to update the character grid
-function updateCharacterGrid(characters, searchValue) {
+// Function to populate character grid
+function populateCharacterGrid() {
   const characterGridElement = document.querySelector(".character-grid");
 
-  if (!characterGridElement) {
-    console.error("Character grid element not found");
-    return;
-  }
+  const characters = profileDatabase.map((character) => {
+    return generateCharacterMarkup(character);
+  });
 
   // Handle cases where characters is not an array or is empty during initial population or search
   if (!Array.isArray(characters) || characters.length === 0) {
-    characterGridElement.innerHTML = `<p>Character "${
-      searchValue ? searchValue : ""
-    }" not found!</p>`;
+    characterGridElement.innerHTML = "<p>No characters found!</p>";
     return;
   }
 
-  // if characters is an array and not empty generate markup for each character
-  const characterCards = characters.map(generateCharacterMarkup);
-  characterGridElement.innerHTML = characterCards.join("");
+  characterGridElement.innerHTML = characters.join("");
 }
 
-// Function to filter and display characters based on search value
-function filterAndDisplayCharacters(searchValue) {
-  const filteredCharacters = profileDatabase.filter((character) => {
-    return character.name.toLowerCase().includes(searchValue.toLowerCase());
-  });
-
-  updateCharacterGrid(filteredCharacters, searchValue);
-}
-
-// Add event listener to the search input
-const inputSearch = document.querySelector("[data-input-search]");
-
-if (inputSearch) {
-  inputSearch.addEventListener("input", (e) => {
-    const searchValue = e.target.value.toLowerCase();
-    filterAndDisplayCharacters(searchValue);
-  });
-} else {
-  console.error("Search input element not found");
-}
-
-// Initial population of the character grid
-updateCharacterGrid(profileDatabase);
+populateCharacterGrid();

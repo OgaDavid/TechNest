@@ -32,7 +32,7 @@ a {
 }
 
 .character-grid {
-  padding: 48px 0 20px 0;
+  padding: 20px 0 20px 0;
   display: flex;
   flex-wrap: wrap;
   align-items: start;
@@ -99,6 +99,14 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+[data-input-search] {
+  width: 500px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin: 24px;
 }
 
 @media screen and (max-width: 768px) {
