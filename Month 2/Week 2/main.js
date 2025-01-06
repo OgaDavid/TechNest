@@ -1,3 +1,4 @@
+// function to fetch characters from the API
 async function fetchCharacters() {
   try {
     const loadingElement = document.querySelector(".loading");
