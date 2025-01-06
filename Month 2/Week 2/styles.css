@@ -31,7 +31,16 @@ a {
   width: 200px;
 }
 
-.character-grid {
+.loading {
+  display: none;
+}
+
+.is-loading {
+  display: block;
+}
+
+.character-grid,
+.loading-grid {
   padding: 48px 0 20px 0;
   display: flex;
   flex-wrap: wrap;
@@ -39,6 +48,42 @@ a {
   justify-content: center;
   gap: 36px;
   width: 750px;
+}
+
+.loading-card {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding-right: 24px;
+  overflow: hidden;
+  width: 350px;
+}
+
+.loading-card .image {
+  height: 100px;
+  width: 100px;
+}
+
+.loading-card .text {
+  height: 25px;
+  width: 200px;
+}
+
+.loading-card .content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loading-card .image,
+.text {
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
 }
 
 .preview-card {
@@ -71,11 +116,18 @@ a {
   font-weight: 600;
 }
 
+.preview-card p {
+  color: var(--dark-blue);
+  padding-top: 10px;
+  font-size: 12px;
+}
+
 .card {
   display: flex;
   flex-direction: column;
   align-items: start;
   padding: 24px;
+  max-width: 300px;
   border: 1px solid var(--border);
   border-radius: 12px;
 }
@@ -83,6 +135,19 @@ a {
 .title {
   color: var(--light-blue);
   padding-bottom: 10px;
+  text-wrap: wrap;
+}
+
+.back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: var(--light-blue);
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .card img {
@@ -99,6 +164,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  line-height: 1.4;
 }
 
 .message {
@@ -107,8 +173,15 @@ a {
   color: var(--dark-blue);
 }
 
+@keyframes shine {
+  to {
+    background-position-x: -200%;
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .character-grid {
+  .character-grid,
+  .loading-grid {
     width: 100%;
     padding: 24px;
   }
@@ -128,6 +201,7 @@ a {
 
   .card {
     width: 100%;
+    margin-top: 60px;
   }
 
   .card img {
