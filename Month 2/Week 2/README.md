@@ -17,9 +17,11 @@ After conducting some research, I discovered that I could pass small pieces of d
 ## ⚙️ JavaScript Logic
 
 ## 📂 main.js
+
 The `main.js` file is responsible for fetching and displaying a list of characters from the Rick and Morty API. It handles the display of a loading animation while data is being fetched and dynamically populates the character grid with the fetched data.
 
 ### _1. Function to Fetch Characters_
+
 The `fetchCharacters` function is an asynchronous function responsible for fetching character data from the [Rick and Morty API](https://rickandmortyapi.com/api/character) and updating the UI accordingly.
 
 ```javascript
@@ -29,8 +31,11 @@ async function fetchCharacters() {
     const loadingElement = document.querySelector(".loading");
     loadingElement.style.display = "block";
 
-    const res = await fetch("https://rickandmortyapi.com/api/character");
+    const res = await fetch("https://rickandmortyapi.com/api/characte");
     if (!res.ok) {
+      loadingElement.style.display = "none";
+      characterGridElement.innerHTML =
+        '<p class="message">Failed to fetch characters!</p>';
       throw new Error("Network response not OK. Please check your request.");
     }
     const data = await res.json();
@@ -55,6 +60,7 @@ async function fetchCharacters() {
 - **Error Handling**: If any error occurs during the fetch operation, it is caught and logged to the console.
 
 ### _2. Function to Generate Markup for a Character_
+
 I created a function to generate the HTML markup for a single character card. This function takes a character object as input and returns the corresponding HTML string:
 
 ```javascript
@@ -77,13 +83,12 @@ function generateCharacterMarkup(character) {
 ```
 
 ### _3. Function to Populate the Character Grid_
+
 I created a function to populate the character grid with the provided characters. This function handles cases where the characters array is empty or invalid.
 
 ```javascript
 / Function to populate character grid
 function populateCharacterGrid(data) {
-  const characterGridElement = document.querySelector(".character-grid");
-
   const characters = data?.map((character) => {
     return generateCharacterMarkup(character);
   });
@@ -100,6 +105,7 @@ function populateCharacterGrid(data) {
 ```
 
 ### _4. Initial Population of the Character Grid_
+
 To initially populate the character grid, I called the `populateCharacterGrid` function.
 
 ```javascript
@@ -108,9 +114,11 @@ fetchCharacters();
 ```
 
 ## 📂 character.js
+
 The `character.js` file is responsible for fetching and displaying data for a single character based on the character ID from the URL parameters. It updates the page title and populates the character card with the fetched data.
 
 ### _1. Extracting the character ID from URLSearchParams_
+
 The URLSearchParams object is used to parse the query string from the URL. The characterId is extracted from the URL parameters.
 
 ```javascript
@@ -119,7 +127,8 @@ const characterId = urlParams.get("characterId");
 ```
 
 ### _2. Function to Fetch a Single Character_
-The  `fetchSingleCharacter` function is an asynchronous function responsible for fetching data for a single character based on the character ID from the URL parameters and updating the UI accordingly.
+
+The `fetchSingleCharacter` function is an asynchronous function responsible for fetching data for a single character based on the character ID from the URL parameters and updating the UI accordingly.
 
 ```javascript
 // Function to fetch a single character from the API
@@ -154,6 +163,7 @@ async function fetchSingleCharacter() {
   }
 }
 ```
+
 - **Displaying the Loading Element**: The function selects the loading element from the DOM and sets its display style to `block` to make it visible.
 - **Fetching Data from the API**: It makes a fetch request to the Rick and Morty API endpoint with the character ID from the URL parameters and waits for the response.
 - **Checking the Response**: If the response is not OK, it updates the page title to "Character not found", sets the inner HTML of the character card element to display a "Character not found!" message, and throws an error.
@@ -163,6 +173,7 @@ async function fetchSingleCharacter() {
 - **Error Handling**: If any error occurs during the fetch operation, it is caught and logged to the console.
 
 ### _3. Function to Populate the Character Card_
+
 I created a function to populate the character card with the fetched character data. This function takes a character object as input and updates the inner HTML of the character card element. The function handles cases where the characters array is empty or invalid.
 
 ```javascript
@@ -187,13 +198,14 @@ function populateCharacterCard(data) {
 
   characterCardContainerElement.innerHTML = characterMarkup;
 }
-
 ```
 
 ## 📂 loading.js
+
 The `loading.js` file is responsible for generating and displaying loading cards while data is being fetched. These loading cards provide a visual indication to the user that data is being loaded.
 
 ## _1. Function to Generate Loading Cards_
+
 The `generateLoadingCards` function is responsible for generating a specified number of loading card templates and returning them as a single string. The function creates an array of the specified length (`count`) and fills it with the loading card template using `Array(count).fill(loadingCardTemplate)`. The function then joins the array of loading card templates into a single string using `join("")` and returns it.
 
 ```javascript
@@ -214,6 +226,7 @@ function generateLoadingCards(count) {
 ```
 
 ## _2. Function to Inject the Loading Cards_
+
 The `showLoadingGrid` function injects the generated loading cards into the loading grid element in the DOM. This function is used to display the loading animation while data is being fetched. One of the key features of this function is its reusability, allowing it to be used to show different loading screens based on the current location or context within the application.
 
 ```javascript

@@ -1,11 +1,16 @@
+const characterGridElement = document.querySelector(".character-grid");
+
 // function to fetch characters from the API
 async function fetchCharacters() {
   try {
     const loadingElement = document.querySelector(".loading");
     loadingElement.style.display = "block";
 
-    const res = await fetch("https://rickandmortyapi.com/api/character");
+    const res = await fetch("https://rickandmortyapi.com/api/characte");
     if (!res.ok) {
+      loadingElement.style.display = "none";
+      characterGridElement.innerHTML =
+        '<p class="message">Failed to fetch characters!</p>';
       throw new Error("Network response not OK. Please check your request.");
     }
     const data = await res.json();
@@ -40,8 +45,6 @@ function generateCharacterMarkup(character) {
 
 // Function to populate character grid
 function populateCharacterGrid(data) {
-  const characterGridElement = document.querySelector(".character-grid");
-
   const characters = data?.map((character) => {
     return generateCharacterMarkup(character);
   });
