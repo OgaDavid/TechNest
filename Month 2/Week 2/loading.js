@@ -26,7 +26,7 @@ function generateLoadingCards(count) {
 }
 
 // Function to inject loading cards into the loading grid
-export function showLoadingGrid() {
+function showLoadingGrid() {
   // Get the current location
   const currentLocation = window.location.pathname.split("/").pop();
 

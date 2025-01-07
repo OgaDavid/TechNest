@@ -2,6 +2,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const characterId = urlParams.get("characterId");
 const characterCardContainerElement = document.querySelector(".card-container");
 
+// Function to fetch a single character from the API
 async function fetchSingleCharacter() {
   try {
     const loadingElement = document.querySelector(".loading");
@@ -13,6 +14,7 @@ async function fetchSingleCharacter() {
 
     if (!response.ok) {
       document.title = `Character not found | Rick and Morty Character Database`;
+      loadingElement.style.display = "none";
       characterCardContainerElement.innerHTML =
         '<p class="message">Character not found!</p>';
       throw new Error("Network response not OK. Please check your request.");
@@ -33,6 +35,7 @@ async function fetchSingleCharacter() {
   }
 }
 
+// Function to populate the character card
 function populateCharacterCard(data) {
   if (!data) {
     characterCardContainerElement.innerHTML =
