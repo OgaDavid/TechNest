@@ -6,7 +6,7 @@ async function fetchCharacters() {
     const loadingElement = document.querySelector(".loading");
     loadingElement.style.display = "block";
 
-    const res = await fetch("https://rickandmortyapi.com/api/characte");
+    const res = await fetch("https://rickandmortyapi.com/api/character");
     if (!res.ok) {
       loadingElement.style.display = "none";
       characterGridElement.innerHTML =
