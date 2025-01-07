@@ -1,3 +1,14 @@
+const characterPageLoadingTemplate = `
+    <div class="loading-character-card">
+      <div class="image"></div>
+      <div class="character-description">
+        <p class="text"></p>
+        <p class="text"></p>
+        <p class="text"></p>
+      </div>
+    </div>
+`;
+
 // Function to generate loading cards
 function generateLoadingCards(count) {
   const loadingCardTemplate = `
@@ -16,9 +27,23 @@ function generateLoadingCards(count) {
 
 // Function to inject loading cards into the loading grid
 export function showLoadingGrid() {
-  const loadingGridElement = document.querySelector(".loading-grid");
+  // Get the current location
+  const currentLocation = window.location.pathname.split("/").pop();
+
+  const loadingGridElement = document.querySelector(
+    currentLocation === "index.html"
+      ? ".loading-grid"
+      : ".character-loading-grid"
+  );
   if (loadingGridElement) {
-    loadingGridElement.innerHTML = generateLoadingCards(8);
+    // Show different loading templates based on the current page
+    if (currentLocation === "index.html") {
+      loadingGridElement.innerHTML = generateLoadingCards(8);
+    } else if (currentLocation === "character.html") {
+      loadingGridElement.innerHTML = characterPageLoadingTemplate;
+    } else {
+      loadingGridElement.innerHTML = "Loading...";
+    }
   } else {
     console.error("Loading grid element not found");
   }

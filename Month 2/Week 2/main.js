@@ -3,13 +3,16 @@ async function fetchCharacters() {
   try {
     const loadingElement = document.querySelector(".loading");
     loadingElement.style.display = "block";
+
     const res = await fetch("https://rickandmortyapi.com/api/character");
     if (!res.ok) {
       throw new Error("Network response not OK. Please check your request.");
     }
     const data = await res.json();
-    // Simulate a delay of 1 second to show loading screen 😁
+
+    // Simulate a delay of 1 second to show the amazing loading screen 😁
     setTimeout(() => {
+      // Hide the loading element and populate the character grid
       loadingElement.style.display = "none";
       populateCharacterGrid(data.results);
     }, 1000);
