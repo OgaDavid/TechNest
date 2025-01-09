@@ -70,7 +70,7 @@ function generateCharacterMarkup(character) {
     <a
       title="${character.name}"
       class="preview-card"
-      href="character.html?characterId=${character.id}"
+      href="character.html?characterId=${character.id}" // dynamic href with the selected characterId to be passed to the character page
     >
       <img src="${character.image}" alt="${character.name}" />
       <div>
@@ -202,7 +202,7 @@ function populateCharacterCard(data) {
 
 ## 📂 loading.js
 
-The `loading.js` file is responsible for generating and displaying loading cards while data is being fetched. These loading cards provide a visual indication to the user that data is being loaded.
+The `loading.js` file is responsible for generating and displaying loading cards while data is being fetched. It handles gracefully, the correct loading screens to show based on the current path location (`character.html` or `index.html`). These loading cards provide a visual indication to the user that data is being loaded.
 
 ## _1. Function to Generate Loading Cards_
 
