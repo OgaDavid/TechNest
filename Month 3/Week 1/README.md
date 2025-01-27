@@ -4,7 +4,7 @@
 
 # _Project Demo_
 
-[project demo](https://github.com/user-attachments/assets/94b6216f-98b3-4f4a-bf41-f17cc871a723)
+[project demo](https://github.com/user-attachments/assets/a113639e-0aab-41d5-8442-d5259400833b)
 
 # _Challenges Faced_
 
