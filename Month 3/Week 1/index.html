@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick and Morty Character Database</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="container">
+      <img class="logo" src="logo.png" alt="logo" />
+      <div class="search-toggle">Use Fuzzy Search</div>
+      <div class="search-container">
+        <input placeholder="Search characters" type="text" data-input-search />
+        <button class="clear-btn">Clear</button>
+      </div>
+      <!-- Loading -->
+      <div class="loading">
+        <div class="loading-grid"></div>
+      </div>
+      <!--  -->
+      <div class="character-grid"></div>
+    </section>
+  </body>
+  <!-- Fuse.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+  <script type="module" src="main.js"></script>
+  <script type="module" src="loading.js"></script>
+</html>
