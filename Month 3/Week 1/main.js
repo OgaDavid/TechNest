@@ -14,8 +14,8 @@ if (searchToggleElement) {
     // Toggle the search mode between normal and fuzzy search
     isFuzzySearch = !isFuzzySearch;
     searchToggleElement.textContent = isFuzzySearch
-      ? "Use Normal Search"
-      : "Use Fuzzy Search";
+      ? "Normal Search 🔍"
+      : "Advanced Search 🚀";
 
     if (isFuzzySearch && profileDatabase) {
       inputSearch.placeholder = "Search characters using fuzzy search...";
