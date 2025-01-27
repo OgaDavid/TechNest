@@ -18,7 +18,7 @@ if (searchToggleElement) {
       : "Advanced Search 🚀";
 
     if (isFuzzySearch && profileDatabase) {
-      inputSearch.placeholder = "Search characters using fuzzy search...";
+      inputSearch.placeholder = "Search characters using advanced search...";
       inputSearch.classList.add("fuzzy-search");
       clearSearchElement.classList.add("fuzzy-search");
 
