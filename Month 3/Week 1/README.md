@@ -1,6 +1,6 @@
 # _Month 3, Week 1_
 
-`Fetch data from an API and dynamically render UI. This involves fetching live data from an API and generating HTML content to update the UI based on that data. Optional - Expand error handling on your web page(s). Consider the user experience for such cases as data fetching failures, lost network connection, etc.`
+`Add functionality to search and filter your webpage with multiple characters. You decide whether you want to use local data or fetched data from an API, and how "smart" you want your search functionality to be - i.e., exact name matching ("firstName lastName"), partial name matching ("firstNa"), case sensitivity ("firstname lastname"), wildcard or pattern support ("first*", "f?rst"), fuzzy searching. Add functionality to reset the data and display all the characters once more.`
 
 # _Project Demo_
 
