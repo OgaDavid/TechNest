@@ -73,8 +73,8 @@ a {
   outline: 1px solid var(--light-blue);
 }
 
-.fuzzy-search:focus,
-.fuzzy-search:valid {
+.advanced-search:focus,
+.advanced-search:valid {
   outline: none;
   --angle: 0deg;
   border: 3px solid;

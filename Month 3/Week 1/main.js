@@ -1,7 +1,7 @@
 const API_URL = "https://rickandmortyapi.com/api/character";
 
 let fuse, profileDatabase;
-let isFuzzySearch = false;
+let isAdvancedSearch = false;
 
 const characterGridElement = document.querySelector(".character-grid");
 const searchToggleElement = document.querySelector(".search-toggle");
@@ -11,18 +11,18 @@ const inputSearch = document.querySelector("[data-input-search]");
 // Add event listener to the search toggle button
 if (searchToggleElement) {
   searchToggleElement.addEventListener("click", () => {
-    // Toggle the search mode between normal and fuzzy search
-    isFuzzySearch = !isFuzzySearch;
-    searchToggleElement.textContent = isFuzzySearch
+    // Toggle the search mode between normal and advanced search
+    isAdvancedSearch = !isAdvancedSearch;
+    searchToggleElement.textContent = isAdvancedSearch
       ? "Normal Search 🔍"
       : "Advanced Search 🚀";
 
-    if (isFuzzySearch && profileDatabase) {
+    if (isAdvancedSearch && profileDatabase) {
       inputSearch.placeholder = "Search characters using advanced search...";
-      inputSearch.classList.add("fuzzy-search");
-      clearSearchElement.classList.add("fuzzy-search");
+      inputSearch.classList.add("advanced-search");
+      clearSearchElement.classList.add("advanced-search");
 
-      // Initialize Fuse for fuzzy search
+      // Initialize Fuse for advanced search
       fuse = new Fuse(profileDatabase, {
         includeScore: true,
         threshold: 0.3,
@@ -30,8 +30,8 @@ if (searchToggleElement) {
       });
     } else {
       inputSearch.placeholder = "Search characters";
-      inputSearch.classList.remove("fuzzy-search");
-      clearSearchElement.classList.remove("fuzzy-search");
+      inputSearch.classList.remove("advanced-search");
+      clearSearchElement.classList.remove("advanced-search");
     }
   });
 }
@@ -117,7 +117,7 @@ function toggleLoading(isLoading) {
 if (inputSearch) {
   inputSearch.addEventListener("input", (e) => {
     const searchValue = e.target.value.toLowerCase();
-    if (!isFuzzySearch) {
+    if (!isAdvancedSearch) {
       filterAndDisplayCharacters(searchValue);
       return;
     }
