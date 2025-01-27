@@ -17,6 +17,9 @@ if (searchToggleElement) {
       ? "Normal Search 🔍"
       : "Advanced Search 🚀";
 
+    inputSearch.value = "";
+    populateCharacterGrid(profileDatabase);
+
     if (isAdvancedSearch && profileDatabase) {
       inputSearch.placeholder = "Search characters using advanced search...";
       inputSearch.classList.add("advanced-search");
