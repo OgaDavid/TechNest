@@ -1,4 +1,4 @@
-# _Month 2, Week 2_
+# _Month 3, Week 1_
 
 `Fetch data from an API and dynamically render UI. This involves fetching live data from an API and generating HTML content to update the UI based on that data. Optional - Expand error handling on your web page(s). Consider the user experience for such cases as data fetching failures, lost network connection, etc.`
 
