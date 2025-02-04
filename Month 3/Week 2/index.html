@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rick and Morty Character Database</title>
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/pagination.css" />
+    <!-- Fontawesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <section class="container">
+      <img class="logo" src="assets/logo.png" alt="logo" />
+      <div class="search-toggle">Advanced Search 🚀</div>
+      <div class="search-container">
+        <input placeholder="Search characters" type="text" data-input-search />
+        <button class="clear-btn">Clear</button>
+      </div>
+      <!-- Loading -->
+      <div class="loading">
+        <div class="loading-grid"></div>
+      </div>
+      <!--  -->
+      <div class="character-grid"></div>
+    </section>
+
+    <section>
+      <div class="pagination-container">
+        <button class="button" id="startBtn" disabled>
+          <i class="fa-solid fa-angles-left"></i>
+        </button>
+        <button class="button prevNext" id="prev" disabled>
+          <i class="fa-solid fa-angle-left"></i>
+        </button>
+
+        <div class="pagination-links">
+          <div class="pg-link active">1</div>
+          <div class="pg-link">2</div>
+          <div class="pg-link">3</div>
+          <div class="pg-link">4</div>
+          <div class="pg-link">5</div>
+          <div class="pg-link">6</div>
+          <div class="pg-link">7</div>
+          <div class="pg-link">8</div>
+          <div class="pg-link">9</div>
+          <div class="pg-link">10</div>
+        </div>
+
+        <button class="button prevNext" id="next">
+          <i class="fa-solid fa-angle-right"></i>
+        </button>
+        <button class="button" id="endBtn">
+          <i class="fa-solid fa-angles-right"></i>
+        </button>
+      </div>
+    </section>
+  </body>
+  <!-- Fuse.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js"></script>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/loading.js"></script>
+  <script type="module" src="js/pagination.js"></script>
+</html>
