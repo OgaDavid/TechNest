@@ -4,14 +4,13 @@ const API_URL = "https://rickandmortyapi.com/api/character";
 
 let fuse,
   profileDatabase,
+  totalPages,
   isAdvancedSearch = false;
 
 const characterGridElement = document.querySelector(".character-grid"),
   searchToggleElement = document.querySelector(".search-toggle"),
   clearSearchElement = document.querySelector(".clear-btn"),
   inputSearch = document.querySelector("[data-input-search]");
-
-initPagination(updatePage);
 
 // Fetch characters
 async function fetchCharacters(page = 1) {
@@ -28,21 +27,39 @@ async function fetchCharacters(page = 1) {
     const data = await res.json();
 
     profileDatabase = data.results;
+    totalPages = data.info.pages;
 
     // Reinitialize Fuse for fuzzy search with the new data
     fuse = new Fuse(profileDatabase, {
       includeScore: true,
       threshold: 0.3,
-      keys: ["name"],
+      keys: ["name", "gender"],
     });
 
     setTimeout(() => {
       toggleLoading(false);
       populateCharacterGrid(profileDatabase);
     }, 300);
+
+    // Initialize pagination after setting totalPages
+    initPagination(updatePage, totalPages);
   } catch (error) {
     console.error("Error fetching characters:", error);
   }
+}
+
+// Update page
+function updatePage(page) {
+  updateURL(page);
+  fetchCharacters(page);
+}
+
+// Toggle loading
+function toggleLoading(isLoading) {
+  document.querySelector(".loading").style.display = isLoading
+    ? "block"
+    : "none";
+  characterGridElement.style.display = isLoading ? "none" : "flex";
 }
 
 function populateCharacterGrid(data, searchValue = "") {
@@ -65,20 +82,6 @@ function populateCharacterGrid(data, searchValue = "") {
       `
     )
     .join("");
-}
-
-// Update page
-function updatePage(page) {
-  updateURL(page);
-  fetchCharacters(page);
-}
-
-// Toggle loading
-function toggleLoading(isLoading) {
-  document.querySelector(".loading").style.display = isLoading
-    ? "block"
-    : "none";
-  characterGridElement.style.display = isLoading ? "none" : "flex";
 }
 
 function filterAndDisplayCharacters(searchValue) {
