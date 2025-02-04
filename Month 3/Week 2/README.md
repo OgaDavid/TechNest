@@ -1,6 +1,6 @@
-# _Month 3, Week 1_
+# _Month 3, Week 2_
 
-`Add functionality to search and filter your webpage with multiple characters. You decide whether you want to use local data or fetched data from an API, and how "smart" you want your search functionality to be - i.e., exact name matching ("firstName lastName"), partial name matching ("firstNa"), case sensitivity ("firstname lastname"), wildcard or pattern support ("first*", "f?rst"), fuzzy searching. Add functionality to reset the data and display all the characters once more.`
+`Add pagination functionality with Back and Next buttons. Consider paginating both display states: searched/filtered and unfiltered sets of character data. Extend pagination by adding "jump to page x" functionality (e.g., "Jump to Start/End", "1 2 ... 10", "Jump to page" + input text field for the page number). Implement pagination with "infinite scroll", a design pattern where new content is dynamically loaded as the user scrolls toward the bottom of the page`
 
 # _Project Demo_
 
