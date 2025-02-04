@@ -52,11 +52,11 @@ async function fetchCharacters() {
   }
 }
 ```
-- **Loading State**: The toggleLoading function is used to show or hide the loading animation while data is being fetched.
+- **Loading State**: The `toggleLoading` function is used to show or hide the loading animation while data is being fetched.
 
 - **Error Handling**: If the API request fails, an error message is displayed, and the error is logged to the console.
 
-- **Data Storage**: The fetched data is stored in the profileDatabase variable for use in search and filtering.
+- **Data Storage**: The fetched data is stored in the `profileDatabase` variable for use in search and filtering.
 
 ### _2. Toggling Between Normal and Advanced Search_
 
